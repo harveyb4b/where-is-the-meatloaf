@@ -1,4 +1,7 @@
 $(document).ready(function(){
+
+    $('.modal').modal();
+    $('select').formSelect();
     displayData();
 
     //recipeSearchButtonsClick();
@@ -11,7 +14,49 @@ $(document).ready(function(){
         console.log(keywordSearch);
 
         searchFunction(keywordSearch);
+        saveSearch(keywordSearch);
+    });
 
+    $("#modal-search").on("click", function(event) {
+        event.preventDefault();
+
+        var prepTime;
+        var calories; 
+        var ingredients;
+        var dietType;
+
+        keywordSearch = $("#keyword-search").val().trim();
+        prepTime = $("#time-search").val().trim();
+        calories = $("#calories").val().trim();
+        ingredients = $("#num-ingredients").val().trim();
+        dietType = $("#diet-type option:selected").text();
+
+        var appendToQueryURL = "";
+
+        if (prepTime) {
+            appendToQueryURL = appendToQueryURL + "&time=" + prepTime;
+        }
+        
+        if (calories) {
+            calories = calories * 1000;
+            appendToQueryURL = appendToQueryURL + "&calories=" + calories;
+        }
+
+        if (ingredients) {
+            appendToQueryURL = appendToQueryURL + "&ingr=" + ingredients;
+        }
+
+        if (dietType != "Choose your option") {
+            dietType = dietType.toLowerCase();
+            appendToQueryURL = appendToQueryURL + "&diet=" + dietType;
+        }
+
+        searchFunction(keywordSearch, appendToQueryURL);
+        saveSearch(keywordSearch);
+
+    });
+
+    function saveSearch(keywordSearch) {
         var getSavedKeywords = [];
         getSavedKeywords = JSON.parse(localStorage.getItem("keywordSearches"));
 
@@ -27,9 +72,7 @@ $(document).ready(function(){
 
         $("#recent-searches").empty();
         displayData();
-
-    });
-
+    }
 
     function displayData() {
         //get recipes from local storage and add to #recent-searches div
@@ -45,15 +88,15 @@ $(document).ready(function(){
             console.log(this.id);
             
             searchFunction(this.id);
-
+            $("#keyword-search").val(this.id);
         });
     }
 
 
-    function searchFunction(keyword) {
+    function searchFunction(keyword, additionalCriteria) {
         var appId = "820ec0b8"
         var appKey = "04c431218d56d654849a5ee10439cbba"
-        var queryURL = `https://cors-anywhere.herokuapp.com/api.edamam.com/search?app_id=${appId}&app_key=${appKey}&q=${keyword}`
+        var queryURL = `https://cors-anywhere.herokuapp.com/api.edamam.com/search?app_id=${appId}&app_key=${appKey}&q=${keyword}${additionalCriteria}`
         console.log(queryURL);
 
         $.ajax({
