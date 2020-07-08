@@ -27,7 +27,11 @@
                     <span class="helper-text">Recipe Keyword Search</span>
                 </div>
                 <div class="col s6 criteriaLink">
+<<<<<<< HEAD
+                    <a class="modal-trigger" id="modalLink" href="#modal1">Additional Search Criteria</a>
+=======
                     <a class="modal-trigger" id="modal1" href="#modal1">Additional Search Criteria</a>
+>>>>>>> fc9218369cc2dc6bea38561bfd939e01f697a47e
                 </div>
             </div>
         </div>
@@ -39,13 +43,29 @@
 
     <div id="modal1" class="modal">
         <div class="modal-content">
-          <h4>Modal Header</h4>
-          <p>A bunch of text</p>
-          <!-- <label for="time-search">Max time to prepare</label>
-          <input id="time-search" type="text" placeholder="30" class="validate" /> -->
+          <!-- <h4>Modal Header</h4>
+          <p>A bunch of text</p> -->
+          <label for="time-search">Max Prep Time</label>
+          <input id="time-search" type="text" placeholder="30" class="validate" />
+          <label for="num-ingredients">Max Ingredients</label>
+          <input id="num-ingredients" type="text" placeholder="5" class="validate" />
+          <label for="calories">Max Calories per Serving</label>
+          <input id="calories" type="text" placeholder="400" class="validate" />
+          <div class="input-field col s12" id="diet-type">
+            <select>
+              <option value="" disabled selected>Choose your option</option>
+              <option value="1">Balanced</option>
+              <option value="2">High-Protein</option>
+              <option value="3">High-Fiber</option>
+              <option value="4">Low-Fat</option>
+              <option value="5">Low-Carb</option>
+              <option value="6">Low-Sodium</option>
+            </select>
+            <label>Diet Type</label>
+          </div>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          <a href="#!" id="modal-search" class="modal-close waves-effect waves-green btn-flat">Search</a>
         </div>
     </div>
 
@@ -64,8 +84,8 @@
         //=> true
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/script.js"></script>
 </body>
 
