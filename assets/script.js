@@ -7,11 +7,6 @@ $(document).ready(function(){
     //recipeSearchButtonsClick();
 
     var keywordSearch;
-    var prepTime;
-    var calories; 
-    var ingredients;
-    var dietType;
-    
 
     $("#searchBtn").on("click", function(event){
         event.preventDefault();
@@ -24,6 +19,12 @@ $(document).ready(function(){
 
     $("#modal-search").on("click", function(event) {
         event.preventDefault();
+
+        var prepTime;
+        var calories; 
+        var ingredients;
+        var dietType;
+
         keywordSearch = $("#keyword-search").val().trim();
         prepTime = $("#time-search").val().trim();
         calories = $("#calories").val().trim();
