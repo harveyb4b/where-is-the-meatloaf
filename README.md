@@ -2,7 +2,7 @@
 # where-is-the-meatloaf
 
 Hey Ma! Where's the Meatloaf? was created as a tool for people who are too busy to think of healthy meals to eat on a daily/weekly basis and too busy to keep track of their calorie intake.
-![meatloaf](./assets/meatloaf.gif)
+![meatloaf](./assets/meatloaf.png)
 
 
 ## Application
